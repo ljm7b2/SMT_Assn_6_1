@@ -62,7 +62,7 @@ public class Vector2 {
 	 * @return This vector for chaining.
 	 */
 	public Vector2 add(Vector2 vec) {
-		this.x += vec.x*3;
+		this.x += vec.x;
 		this.y += vec.y;
 		return this;
 	}
