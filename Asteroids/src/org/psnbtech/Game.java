@@ -83,17 +83,17 @@ public class Game extends JFrame {
 	/**
 	 * The list of Entity objects that exist in the game world.
 	 */
-	private List<Entity> entities;
+	public List<Entity> entities;
 	
 	/**
 	 * The list of Entity objects that need to be added to the game world.
 	 */
-	private List<Entity> pendingEntities;
+	public List<Entity> pendingEntities;
 		
 	/**
 	 * The Player instance.
 	 */
-	private Player player;
+	public Player player;
 	
 	/**
 	 * <p>The death cooldown timer is responsible for spreading a Player's death
@@ -109,7 +109,7 @@ public class Game extends JFrame {
 	 * will be vulnerable to collisions and the Player will regain the ability to
 	 * shoot.</p>
 	 */
-	private int deathCooldown;
+	public int deathCooldown;
 	
 	/**
 	 * <p>The show level cooldown timer is responsible for displaying the current
@@ -125,7 +125,7 @@ public class Game extends JFrame {
 	 * <p>This timer adds a short delay that must expire before the game can
 	 * be reset, giving the player time to react.</p>
 	 */
-	private int restartCooldown;
+	public int restartCooldown;
 	
 	/**
 	 * The current score.
@@ -164,7 +164,7 @@ public class Game extends JFrame {
 		
 		//Create and add the WorldPanel instance to the window.
 		add(this.world = new WorldPanel(this), BorderLayout.CENTER);
-		
+
 		/*
 		 * Here we add a key listener to the window so that we can process incoming
 		 * user input.
@@ -270,6 +270,23 @@ public class Game extends JFrame {
 		setVisible(true);
 	}
 	
+	//this constructor sets up the class for testing purposes only, do not call for non-test
+	public Game(boolean isTest){
+		
+		this.random = new Random();
+		this.entities = new LinkedList<Entity>();
+		this.pendingEntities = new ArrayList<>();
+		this.player = new Player();
+		
+		//Set the variables to their default values.
+		resetGame();
+		
+		//Create the logic timer and enter the game loop.
+		this.logicTimer = new Clock(FRAMES_PER_SECOND);
+		entities.add(new Asteroid(new Random()));
+		pendingEntities.add(new Asteroid(new Random()));
+	}
+	
 	/**
 	 * Check the user input to see if the key should be used to restart the game.
 	 * @return Whether or not the key restarted the game.
@@ -285,7 +302,7 @@ public class Game extends JFrame {
 	/**
 	 * Starts the game running, and enters the main game loop.
 	 */
-	private void startGame() {
+	public void startGame() {
 		//Initialize the engine's variables.
 		this.random = new Random();
 		this.entities = new LinkedList<Entity>();
@@ -332,7 +349,7 @@ public class Game extends JFrame {
 	/**
 	 * Update the game entities and states.
 	 */
-	private void updateGame() {
+	public void updateGame() {
 		/*
 		 * Here we add any pending entities to the world.
 		 * 

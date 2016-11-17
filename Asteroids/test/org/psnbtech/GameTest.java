@@ -9,26 +9,64 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GameTest {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	
 	@Test
-	public void test() {
-		assertTrue("a"=="a");
+	public void updateGame_EntitiesCleared_Test(){
+		Game game = new Game(true);
+		
+		game.updateGame();
+		
+		assertTrue(game.pendingEntities.isEmpty());
+		
+		assertFalse(game.entities.size() == 2);	
+	}
+	
+	@Test
+	public void updateGame_ReduceCoolDown_Test(){
+		Game game = new Game(true);
+		
+		game.restartCooldown = 1; //these could be changed to getters and setters to keep variables private. 
+		
+		game.updateGame();
+		
+		assertTrue(game.restartCooldown == 0);
+		
+	}
+	
+	@Test
+	public void updateGame_DeathCoolDown_Test(){
+		Game game = new Game(true);
+		
+		game.deathCooldown = 1;
+		
+		game.updateGame();
+		
+		assertTrue(game.deathCooldown == 0);
+		
+	}
+	
+	@Test
+	public void updateGame_PlayerFiringEnabled_True_Test(){
+		Game game = new Game(true);
+		
+		game.deathCooldown = 1;
+		
+		game.updateGame();
+		
+		assertTrue(game.player.firingEnabled == true);
+		
+	}
+	
+	@Test
+	public void updateGame_PlayerFiringEnabled_True_False(){
+		Game game = new Game(true);
+		
+		game.deathCooldown = 101;
+		
+		game.updateGame();
+		
+		assertTrue(game.player.firingEnabled == false);
+		
 	}
 
 }

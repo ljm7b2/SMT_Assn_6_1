@@ -77,7 +77,7 @@ public class Player extends Entity {
 	/**
 	 * Whether the ship is allowed to fire a bullet.
 	 */
-	private boolean firingEnabled;
+	public boolean firingEnabled;
 	
 	/**
 	 * The number of consecutive shots fired.
