@@ -124,7 +124,7 @@ public class Asteroid extends Entity {
 	}
 	
 	@Override
-	public void update(Game game) {
+	public void update(Object game) {
 		super.update(game);
 		rotate(rotationSpeed); //Rotate the image each frame.
 	}

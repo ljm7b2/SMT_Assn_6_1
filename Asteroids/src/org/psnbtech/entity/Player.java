@@ -173,7 +173,7 @@ public class Player extends Entity {
 	}
 		
 	@Override
-	public void update(Game game) {
+	public void update(Object game) {
 		super.update(game);
 		
 		//Increment the animation frame.
@@ -258,7 +258,7 @@ public class Player extends Entity {
 				
 				Bullet bullet = new Bullet(this, rotation);
 				bullets.add(bullet);
-				game.registerEntity(bullet);
+				((Game) game).registerEntity(bullet);
 			}
 			
 			/*

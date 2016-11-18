@@ -17,6 +17,13 @@ public class GameTest {
 		game.updateGame();
 		
 		assertTrue(game.pendingEntities.isEmpty());
+	}
+	
+	@Test
+	public void updateGame_EntitiesHasTwo_Test(){
+		Game game = new Game(true);
+		
+		game.updateGame();
 		
 		assertFalse(game.entities.size() == 2);	
 	}

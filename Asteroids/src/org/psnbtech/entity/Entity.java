@@ -16,7 +16,7 @@ public abstract class Entity {
 	/**
 	 * The position of this entity.
 	 */
-	protected Vector2 position;
+	public Vector2 position;
 	
 	/**
 	 * The velocity of this entity.
@@ -127,7 +127,7 @@ public abstract class Entity {
 	 * Updates the state of this Entity.
 	 * @param game The game instance.
 	 */
-	public void update(Game game) {
+	public void update(Object game) {
 		position.add(velocity);
 		if(position.x < 0.0f) {
 			position.x += WorldPanel.WORLD_SIZE;

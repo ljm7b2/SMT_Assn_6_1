@@ -38,7 +38,7 @@ public class Bullet extends Entity {
 	}
 	
 	@Override
-	public void update(Game game) {
+	public void update(Object game) {
 		super.update(game);
 		
 		//Decrement the lifespan of the bullet, and remove it if needed.
